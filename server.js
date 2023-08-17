@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const tableUser = require("./module/user");
 const allkhoahoc = require ('./module/khoahoc');
 const app = express();
+require("dotenv").config();
 
 app.listen(3000, () => {
   console.log("listening on port 3000");
@@ -75,8 +76,6 @@ app.delete("/data/:id", async (req, res) => {
 });
 
 
-mongoose
-  .connect("mongodb+srv://zorom0404:1234@cluster0.mqugs2p.mongodb.net/")
-  .then(() => {
+mongoose.connect(process.env.MB).then(() => {
     console.log("connection success mongoose");
   });
